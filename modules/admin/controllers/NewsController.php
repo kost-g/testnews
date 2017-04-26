@@ -64,6 +64,8 @@ class NewsController extends Controller
     public function actionCreate()
     {
         $model = new News();
+//        $model-> deleted = 0;
+//        $model-> news_id = $id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->news_id]);
