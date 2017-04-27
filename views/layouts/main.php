@@ -62,15 +62,13 @@ AppAsset::register($this);
         <div >
             <ul class="news_menu nav nav-pills nav-justified">
                 <?= \app\components\MenuWidget::widget(['tpl' => 'menu'])?>
-
-                <!--        <li role="presentation">-->
-                <!--            <a href="">Popular</a>-->
-                <!--        </li>-->
-                <!--        <li role="presentation">-->
-                <!--            <a href="">Most comment</a>-->
-                <!--        </li>-->
-                <!--    </ul>-->
-
+<!--                        <li role="presentation" class="active">-->
+<!--                            <a href="#">Popular</a>-->
+<!--                        </li>-->
+<!--                        <li role="presentation">-->
+<!--                            <a href="#">Most comment</a>-->
+<!--                        </li>-->
+            </ul>
         </div>
 
         <?= $content ?>
