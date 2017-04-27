@@ -5,7 +5,6 @@ use yii\widgets\ActiveForm;
 use app\modules\admin\models\Category;
 use yii\jui\DatePicker;
 
-
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\News */
 /* @var $form yii\widgets\ActiveForm */
@@ -14,8 +13,8 @@ use yii\jui\DatePicker;
 <?
     $date = new DateTime();
     $datetime = $date->format('Y-m-d H:i:s');
-    $category_list = Category::find()->select(['category_name'])->indexBy('category_id')->column();
-    var_dump($category_list);
+//    $category_list = Category::find()->select(['category_name'])->indexBy('category_id')->column();
+//    var_dump($category_list);
 
 ?>
 
@@ -23,12 +22,18 @@ use yii\jui\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'category_name')->dropdownList(['0' => 'Активен', '1'=> 'Не Актиен']);?>
+    <?//= $form->field($model, 'category_name')->textInput() ?>
 
-<!--        --><?//= $form->field($model, 'category_name')->textInput() ?>
+<!--    --><?//= $form->field($model, 'category_name')->dropdownList(Category::find()->select(['category_name'])->indexBy('category_id')->column(),
+//        ['prompt'=>'Select category name']
+//    );?>
 
-<!--    $form->field($model, 'product_category')->dropdownList(ProductCategory::find()->select(['category_name', 'id'])->indexBy('id')->column(),-->
-<!--    ['prompt'=>'Select Category']-->
+    <?= $form->field($model, 'category_name')->dropdownList([
+        '0' => 'Выбрать категорию:',
+        'Economy' => 'Economy',
+        'Sport'=> 'Sport',
+        'Ukraine'=> 'Ukraine',
+        'World'=> 'World',]);?>
 
     <?= $form->field($model, 'header')->textInput(['maxlength' => true]) ?>
 
