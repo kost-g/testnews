@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -59,18 +60,27 @@ AppAsset::register($this);
 //        ]) ?>
 
 <!--        Menu categorys-->
-        <div >
+        <?
+            //find and set for the current element of menu class active
+        $this->registerJs('
+            var cur_url = location.href;
+            var web_index = cur_url.indexOf("web") - 1;
+            var res_url = cur_url.substring(web_index);
+              $("li").find("[href=\'" + res_url + "\']").parent().addClass("active");
+        ');
+        ?>
+
+        <nav >
             <ul class="news_menu nav nav-pills nav-justified">
                 <?= \app\components\MenuWidget::widget(['tpl' => 'menu'])?>
-<!--                        <li role="presentation" class="active">-->
-<!--                            <a href="#">Popular</a>-->
-<!--                        </li>-->
-<!--                        <li role="presentation">-->
-<!--                            <a href="#">Most comment</a>-->
-<!--                        </li>-->
+<!--                <li role="presentation" class="active">-->
+<!--                    <a href="http://testnews/web/category/9">Popular</a>-->
+<!--                </li>-->
+<!--                <li role="presentation">-->
+<!--                    <a href="http://testnews/web/category/8">Most comment</a>-->
+<!--                </li>-->
             </ul>
-        </div>
-
+        </nav>
         <?= $content ?>
 
     </div>

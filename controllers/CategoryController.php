@@ -38,7 +38,7 @@ class CategoryController extends AppController
 //        var_dump($category_id );
 
         $category_name = Category::find()->where(['category_id' => $category_id])->all();
-        $query = News::find()->where(['category_name' => $category_name]);
+        $query = News::find()->where(['category_name' => $category_name])->orderBy(['datetime'=> SORT_DESC]);
 
         $pages = new Pagination(['totalCount' => $query->count(), 'pageSize'=> 2]);
         $news = $query->offset($pages->offset)
